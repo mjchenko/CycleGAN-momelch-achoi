@@ -363,7 +363,7 @@ class ResnetGenerator(nn.Module):
                                          #bias=use_bias),
                 nn.Upsample(scale_factor=2, mode='nearest'),  # 'nearest'
                 nn.ReflectionPad2d(1),
-                nn.Conv2d(in_channels=256, out_channels=128, kernel_size=3, stride=1, padding=0),
+                nn.Conv2d(in_channels=ngf*mult, out_channels=int(ngf * mult / 2), kernel_size=3, stride=1, padding=0),
                       norm_layer(int(ngf * mult / 2)),
                       nn.ReLU(True)]
         model += [nn.ReflectionPad2d(3)]
